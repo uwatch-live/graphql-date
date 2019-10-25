@@ -7,10 +7,13 @@ module.exports = new GraphQLScalarType({
   name: 'Date',
   /**
    * Serialize date value into string
-   * @param  {Date} value date value
+   * @param  {Date|String} value date value
    * @return {String} date as string
    */
   serialize: function (value) {
+    if (typeof value === 'string') {
+      value = new Date(value)
+    }
     assertErr(value instanceof Date, TypeError, 'Field error: value is not an instance of Date')
     assertErr(!isNaN(value.getTime()), TypeError, 'Field error: value is an invalid Date')
     return value.toJSON()
