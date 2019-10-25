@@ -8,11 +8,12 @@ var GraphQLDate = require('../index.js')
 
 describe('GraphQLDate', function () {
   describe('serialize', function() {
-    it('should error when serializing a string value', function (done) {
+    it('should work when serializing a string value', function (done) {
       var str = '2015-07-24T10:56:42.744Z'
+      var date = new Date(str)
       expect(
-        GraphQLDate.serialize.bind(GraphQLDate, str)
-      ).to.throw(/not an instance of Date/)
+        GraphQLDate.serialize.bind(GraphQLDate, str)()
+      ).to.equal(date.toJSON())
       done()
     })
 
