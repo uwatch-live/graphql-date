@@ -1,5 +1,5 @@
 {
-  "name": "graphql-date",
+  "name": "@uwatch/graphql-date",
   "version": "1.0.4",
   "description": "GraphQL Date Type",
   "main": "index.js",
